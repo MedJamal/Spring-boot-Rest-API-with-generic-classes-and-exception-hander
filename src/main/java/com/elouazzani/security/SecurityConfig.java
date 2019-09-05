@@ -11,8 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final String[] PUBLIC_ROUTES = {
-			"/api/auth/**",
-			"/api/product/**"
+			"/api/auth/**"
 	};
 
 	@Bean

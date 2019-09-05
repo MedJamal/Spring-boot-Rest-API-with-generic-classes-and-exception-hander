@@ -1,7 +1,5 @@
 package com.elouazzani.security;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,9 +19,6 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-//		TODO: In memory users
-//		return new User("Jamal", "123456", AuthorityUtils.NO_AUTHORITIES);
 
 		AppUser appUser = userRepository.findByEmail(username);
 

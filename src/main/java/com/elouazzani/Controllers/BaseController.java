@@ -5,7 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.elouazzani.security.AppUser;
 
-public class BaseController {
+public abstract class BaseController {
 	
 	public AppUser getAuthencticatedUser() {
 

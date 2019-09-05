@@ -1,0 +1,4 @@
+auth:
+  expiration: 604800
+  secret: todoAPISecret
+  header: Authorization
