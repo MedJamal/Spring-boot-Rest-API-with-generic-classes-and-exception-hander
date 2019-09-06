@@ -27,12 +27,16 @@ public class UserService implements UserDetailsService {
 		return appUser;
 	}
 	
-	public void save(AppUser appUser) {
+	public Iterable<AppUser> findAll() {
+		return this.userRepository.findAll();
+	}
+	
+	public AppUser save(AppUser appUser) {
 		
 		// Encrypt password
 		appUser.setPassword(passwordEncoder().encode(appUser.getPassword()));
 		
-		this.userRepository.save(appUser);
+		return this.userRepository.save(appUser);
 	}
 
 	// Hashing password
@@ -42,9 +46,6 @@ public class UserService implements UserDetailsService {
 		return new BCryptPasswordEncoder();
 	}
 
-	public Iterable<AppUser> findAll() {
-		return this.userRepository.findAll();
-	}
 	
 	
 

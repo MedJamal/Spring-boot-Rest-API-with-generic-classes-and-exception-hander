@@ -37,4 +37,11 @@ public class AuthController {
 		return new JwtResponse(token);
 	}
 	
+	@PostMapping("/signup")
+	public AppUser signIn(@RequestBody AppUser appUser) {
+		
+		return this.userService.save(appUser);
+		
+	}
+	
 }

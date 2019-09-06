@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.elouazzani.entities.Product;
 import com.elouazzani.exceptions.NotFoundException;
-import com.elouazzani.security.AppUser;
 import com.elouazzani.services.CategoryService;
 import com.elouazzani.services.ProductService;
 
 @RestController
 @RequestMapping("/api/product")
-public class ProductController {
+public class ProductController extends BaseController {
 	
 	@Autowired
 	private ProductService productService;

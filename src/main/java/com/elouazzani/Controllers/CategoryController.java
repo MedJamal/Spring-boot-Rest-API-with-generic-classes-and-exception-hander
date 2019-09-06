@@ -19,13 +19,15 @@ import com.elouazzani.services.CategoryService;
 
 @RestController
 @RequestMapping("/api/category")
-public class CategoryController {
+public class CategoryController extends BaseController {
 	
 	@Autowired
 	private CategoryService categoryService;
+
 	
 	@GetMapping(value = {"", "/"})
 	public ResponseEntity<Iterable<Category>> getAll() {
+		System.out.println(getAuthencticatedUser().getUsername());
 		return new ResponseEntity<>(this.categoryService.findAll(), HttpStatus.OK) ;
 	}
 	
