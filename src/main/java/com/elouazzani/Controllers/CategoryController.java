@@ -23,7 +23,6 @@ public class CategoryController extends BaseController {
 	
 	@Autowired
 	private CategoryService categoryService;
-
 	
 	@GetMapping(value = {"", "/"})
 	public ResponseEntity<Iterable<Category>> getAll() {

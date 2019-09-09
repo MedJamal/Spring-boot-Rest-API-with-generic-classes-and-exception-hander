@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.elouazzani.exceptions.NotFoundException;
+import com.elouazzani.exceptions.BadCredentialsException;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService {
 
 		AppUser appUser = userRepository.findByEmail(username);
 
-		if(appUser == null) throw new NotFoundException(String.format("User %s was not found in database.", username));
+		if(appUser == null) throw new BadCredentialsException(String.format("User with this email address: %s was not found.", username));
 
 		return appUser;
 	}
@@ -38,13 +38,18 @@ public class UserService implements UserDetailsService {
 		
 		return this.userRepository.save(appUser);
 	}
+	
+	public AppUser findByEmail(String email) {
+		return this.userRepository.findByEmail(email);
+	}
 
 	// Hashing password
 	@Bean
 	private PasswordEncoder passwordEncoder() {
-		System.out.println("PasswordEncoder");
 		return new BCryptPasswordEncoder();
 	}
+
+
 
 	
 	
